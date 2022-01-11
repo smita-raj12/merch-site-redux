@@ -12,6 +12,7 @@ function MerchandiseDetail(props){
       <p>{merchandise.quantity}</p>
       <p>{merchandise.price}</p>
       <button onClick={ props.onClickingBuy }>Buy</button>
+      <button onClick={ props.onClickingReStock }>ReStock</button>
       <button onClick={()=> onClickingDelete(merchandise.id) }>Close Merchandise</button> 
       <button onClick={ props.onClickingEdit }>Update Merchandise</button>
       <hr/>

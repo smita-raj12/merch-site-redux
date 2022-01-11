@@ -14,7 +14,7 @@ class MerchandiseControl extends React.Component {
             selectedMerchandise: null,
             editing: false,
             quan:null,
-            error:" "
+            
         };
         this.handleClick = this.handleClick.bind(this);
     }
@@ -24,6 +24,7 @@ class MerchandiseControl extends React.Component {
       
       this.setState({editing: true});
     }
+
     handleClickingBuy =()=> {
         //console.log("buy an item");
        
@@ -33,6 +34,25 @@ class MerchandiseControl extends React.Component {
        
        MainMerchandiseList.map(q =>{
          quan= q.quantity -- ;
+         console.log(quan);
+         if(quan <=0){
+              console.log("outof stock")
+              
+         }
+         this.setState({quan: quan});
+       })
+    
+    }
+
+    handleClickingReStock =()=> {
+        //console.log("buy an item");
+       
+       let MainMerchandiseList = [...this.state.mainMerchandiseList];
+       console.log(MainMerchandiseList);
+       let quan = 0;
+       
+       MainMerchandiseList.map(q =>{
+         quan= q.quantity ++ ;
          console.log(quan);
          if(quan <=0){
               console.log("outof stock")
@@ -97,7 +117,8 @@ class MerchandiseControl extends React.Component {
       currentlyVisibleState = <MerchandiseDetail merchandise = {this.state.selectedMerchandise} 
                                     onClickingDelete = {this.handleDeletingMerchandise} 
                                     onClickingEdit = {this.handleEditClick}  
-                                    onClickingBuy = {this.handleClickingBuy}        />
+                                    onClickingBuy = {this.handleClickingBuy} 
+                                    onClickingReStock = {this.handleClickingReStock}        />
       buttonText = "Return to Merchandise List";
     }
     else if (this.state.formVisibleOnPage) {
