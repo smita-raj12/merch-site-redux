@@ -13,8 +13,8 @@ class MerchandiseControl extends React.Component {
             mainMerchandiseList: [],
             selectedMerchandise: null,
             editing: false,
-            quan:null,
-            
+            quan:null
+           
         };
         this.handleClick = this.handleClick.bind(this);
     }
@@ -33,15 +33,12 @@ class MerchandiseControl extends React.Component {
        let quan = 0;
        
        MainMerchandiseList.map(q =>{
-         quan= q.quantity -- ;
-         console.log(quan);
-         if(quan <=0){
-              console.log("outof stock")
-              
-         }
-         this.setState({quan: quan});
+        quan= q.quantity -- ;
+        console.log(quan);
+       
+        
        })
-    
+       this.setState({quan: quan});
     }
 
     handleClickingReStock =()=> {

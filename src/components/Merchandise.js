@@ -9,6 +9,7 @@ function Merchandise(props){
         <p>{props.description}</p>
         <p>{props.quantity}</p>
         <p>{props.price}</p>
+        <p>{props.error}</p>
         <hr/>
         </div>
     </React.Fragment>
