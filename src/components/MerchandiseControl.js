@@ -27,27 +27,18 @@ class MerchandiseControl extends React.Component {
 
     handleClickingBuy =()=> {
         //console.log("buy an item");
-       
-       let MainMerchandiseList = [...this.state.mainMerchandiseList];
-       console.log(MainMerchandiseList);
-       let quan = 0;
-       
-       MainMerchandiseList.map(q => {
-        quan= q.quantity -- ;
-        console.log(quan);
-       
-        
-       });
+        let incrementedMerchandiseList = this.state.mainMerchandiseList;
+        let quan = 0;
+        incrementedMerchandiseList.map(q => {
+            quan= q.quantity -- ;
+            console.log(quan);
+        });
        this.setState({quan: quan});
     }
 
     handleClickingReStock =()=> {
-       
-       
-       let MainMerchandiseList = [...this.state.mainMerchandiseList];
-       console.log(MainMerchandiseList);
+       let MainMerchandiseList = this.state.mainMerchandiseList;
        let quan = 0;
-       
        MainMerchandiseList.map(q =>{
             quan= q.quantity ++ ;
             console.log(quan);

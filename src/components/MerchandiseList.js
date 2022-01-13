@@ -10,9 +10,9 @@ function MerchandiseList(props) {
         <Merchandise
           whenMerchandiseClicked = { props.onMerchandiseSelection }
           name={merchandise.name}
-          description={merchandise.description}
-          quantity={merchandise.quantity}
-          price={merchandise.price}
+        //   description={merchandise.description}
+        //   quantity={merchandise.quantity}
+        //   price={merchandise.price}
           id={merchandise.id}
           key={merchandise.id}
           />
