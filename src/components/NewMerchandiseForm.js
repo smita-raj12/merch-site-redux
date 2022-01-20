@@ -6,7 +6,7 @@ import ReusableForm from "./ReusableForm";
 function NewMerchandiseForm(props){
       function handleNewMerchandiseFormSubmission(event) {
         event.preventDefault();
-        props.onNewMerchandiseCreation({name: event.target.name.value, description: event.target.description.value, quantity:parseInt(event.target.quantity.value), price: event.target.price.value, id: v4()});
+        props.onNewMerchandiseCreation({name: event.target.name.value, description: event.target.description.value, quantity:parseInt(event.target.quantity.value), price: parseInt(event.target.price.value), id: v4()});
       }
       
       return (

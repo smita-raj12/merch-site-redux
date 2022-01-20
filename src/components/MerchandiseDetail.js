@@ -12,7 +12,7 @@ function MerchandiseDetail(props){
       return quantity;
     }
   }
-
+  
   return (
     <React.Fragment>
       <h1>Merchandise Detail</h1>
@@ -20,7 +20,6 @@ function MerchandiseDetail(props){
       <p>{merchandise.description}</p>
       <p>{getQuantityText(merchandise.quantity)}</p>
       <p>{merchandise.price}</p>
-      <p>{error}</p>
       <button disabled={merchandise.quantity <= 0 ? true : false} onClick={ props.onClickingBuy }>Buy</button>
       <button onClick={ props.onClickingReStock }>ReStock</button>
       <button onClick={()=> onClickingDelete(merchandise.id) }>Close Merchandise</button> 

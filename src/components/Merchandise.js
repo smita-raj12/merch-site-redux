@@ -18,7 +18,7 @@ function Merchandise(props){
 
 Merchandise.propTypes = {
     name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
+    description: PropTypes.string,
     quantity: PropTypes.number,
     price: PropTypes.string, 
     whenMerchandiseClicked: PropTypes.func 

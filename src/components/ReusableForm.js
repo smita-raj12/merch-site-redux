@@ -15,10 +15,12 @@ function ReusableForm(props) {
           placeholder='Description' />
         <input
           type="number"
+          defaultValue={5}
           name='quantity'
           placeholder='Quantity' />
         <input
-          type='text'
+          type='number'
+          defaultValue={10}
           name='price'
           placeholder='Price' />
         <button type='submit'>{props.buttonText}</button>

@@ -4,6 +4,7 @@ import MerchandiseList from './MerchandiseList';
 import MerchandiseDetail from './MerchandiseDetail';
 import EditMerchandiseForm from './EditMerchandiseForm';
 
+
 class MerchandiseControl extends React.Component {
 
     constructor(props) {
@@ -13,7 +14,8 @@ class MerchandiseControl extends React.Component {
             mainMerchandiseList: [],
             selectedMerchandise: null,
             editing: false,
-            quan:null
+            quan:null,
+            peicen:null
            
         };
         this.handleClick = this.handleClick.bind(this);
@@ -30,10 +32,12 @@ class MerchandiseControl extends React.Component {
         let incrementedMerchandiseList = this.state.mainMerchandiseList;
         let quan = 0;
         incrementedMerchandiseList.map(q => {
-            quan= q.quantity -- ;
+            console.log(q.quantity);
+            console.log(q.price);
+            quan = q.quantity--;
             console.log(quan);
         });
-       this.setState({quan: quan});
+       this.setState({quan: quan, peicen :incrementedMerchandiseList.price --});
     }
 
     handleClickingReStock =()=> {
@@ -108,7 +112,7 @@ class MerchandiseControl extends React.Component {
       
       currentlyVisibleState = <NewMerchandiseForm onNewMerchandiseCreation={this.handleAddingNewMerchandiseToList}  />;
       buttonText = "Return to Merchandise List";
-    } else {
+    }else{
       currentlyVisibleState = <MerchandiseList MerchandiseList={this.state.mainMerchandiseList} onMerchandiseSelection={this.handleChangingSelectedMerchandise} />;
       
       buttonText = "Add Merchandise";
