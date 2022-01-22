@@ -7,7 +7,7 @@ function EditMerchandiseForm(props){
   
     function handleEditMerchandiseFormSubmission(event) {
         event.preventDefault();
-        props.onEditMerchandise({name: event.target.name.value, description: event.target.description.value, quantity: event.target.quantity.value, price: event.target.price.value,id: merchandise.id});
+        props.onEditMerchandise({names: event.target.names.value, description: event.target.description.value, quantity: event.target.quantity.value, price: event.target.price.value,id: merchandise.id});
 }
 
 return (

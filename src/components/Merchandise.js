@@ -5,7 +5,7 @@ function Merchandise(props){
   return (
     <React.Fragment>
         <div onClick = {() => props.whenMerchandiseClicked(props.id)}>
-        <p>{props.name}</p>  
+        <p>{props.names}</p>  
         <p>{props.description}</p>
         <p>{props.quantity}</p>
         <p>{props.price}</p>
@@ -17,10 +17,10 @@ function Merchandise(props){
 }
 
 Merchandise.propTypes = {
-    name: PropTypes.string.isRequired,
+    names: PropTypes.string,
     description: PropTypes.string,
     quantity: PropTypes.number,
-    price: PropTypes.string, 
+    price: PropTypes.number, 
     whenMerchandiseClicked: PropTypes.func 
 };
 

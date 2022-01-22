@@ -6,13 +6,14 @@ function MerchandiseList(props) {
     return (
       <React.Fragment>
       <hr/>
-      {props.MerchandiseList.map((merchandise) =>
+      {Object.values(props.MerchandiseList).map((merchandise) =>
         <Merchandise
           whenMerchandiseClicked = { props.onMerchandiseSelection }
-          name={merchandise.name}
-        //   description={merchandise.description}
-        //   quantity={merchandise.quantity}
-        //   price={merchandise.price}
+          names={merchandise.names}
+          description={merchandise.description}
+          quantity={merchandise.quantity}
+          price={merchandise.price}
+          formattedWaitTime={merchandise.formattedWaitTime}
           id={merchandise.id}
           key={merchandise.id}
           />
@@ -22,7 +23,7 @@ function MerchandiseList(props) {
   }
 
   MerchandiseList.propTypes = {
-    MerchandiseList: PropTypes.array,
+    MerchandiseList: PropTypes.object,
     onMerchandiseSelection: PropTypes.func
   };
 export default MerchandiseList;

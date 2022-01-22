@@ -1,10 +1,14 @@
 export default (state = {}, action) => {
-    const { name, description, quantity, price, id } = action;
+    const { names, description, quantity, price, id } = action;
+    
+    // let initialState={
+    //     quantity: state.quantity
+    // }
     switch (action.type) {
     case 'ADD_MERCH':
       return Object.assign({}, state, {
         [id]: {
-            name: name,
+            names: names,
             description: description,
             quantity: quantity,
             price: price,
@@ -15,14 +19,10 @@ export default (state = {}, action) => {
         let newState = { ...state };
         delete newState[id];
         return newState;
-    case 'INCREMENT_MERCH':    
-        let newState1 = { ...state};
-        newState1.quantity ++;
-        return newState1;
-    case 'DECREMENT_MERCH':    
-        let newState2 = { ...state};
-        newState2.quantity --;
-        return newState2;    
+    case 'INCREMENT': 
+    return Object.assign({}, state, {
+            quantity: state[quantity] ++,
+    });
     default:
         return state;
     }

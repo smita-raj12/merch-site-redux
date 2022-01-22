@@ -7,7 +7,7 @@ describe('merchandiseListReducer', () => {
     name: 'laptop',
     description: 'windows',
     quantity: 4,
-    price: 20,
+    price: '20',
     id: 1
   };
   const merchandiseData1 = {
@@ -18,14 +18,14 @@ describe('merchandiseListReducer', () => {
       name: 'laptop',
       description: 'windows',
       quantity: 4,
-      price: 20,
+      price: '20',
       id: 1 
     },
     2: { 
       name: 'piyano',
       description: 'more sounds',
       quantity: 5,
-      price: 50,
+      price: '50',
       id: 2
     }
   }
@@ -66,7 +66,7 @@ describe('merchandiseListReducer', () => {
         name: 'piyano',
         description: 'more sounds',
         quantity: 5,
-        price: 50,
+        price: '50',
         id: 2
       }
     });

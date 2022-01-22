@@ -3,11 +3,22 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
+import { createStore } from 'redux';
+//import reducer from './reducers/ticket-list-reducer';
+import { Provider } from 'react-redux';
+import rootReducer from './reducers/index';
+
+const store = createStore(rootReducer);
+//const store = createStore(reducer);
+
+store.subscribe(() =>
+  console.log(store.getState())
+);
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
@@ -15,3 +26,4 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+

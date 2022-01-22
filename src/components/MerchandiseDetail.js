@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function MerchandiseDetail(props){
-  const { merchandise, onClickingDelete,error } = props; 
+  const { merchandise, onClickingDelete } = props; 
   
   function getQuantityText(quantity) {
     if (quantity <= 0) {
@@ -16,7 +16,7 @@ function MerchandiseDetail(props){
   return (
     <React.Fragment>
       <h1>Merchandise Detail</h1>
-      <p>{merchandise.name}</p> 
+      <p>{merchandise.names}</p> 
       <p>{merchandise.description}</p>
       <p>{getQuantityText(merchandise.quantity)}</p>
       <p>{merchandise.price}</p>
