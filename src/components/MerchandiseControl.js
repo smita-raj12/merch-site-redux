@@ -5,6 +5,7 @@ import MerchandiseDetail from './MerchandiseDetail';
 import EditMerchandiseForm from './EditMerchandiseForm';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
+import * as a from './../actions';
 
 class MerchandiseControl extends React.Component {
 
@@ -13,7 +14,7 @@ class MerchandiseControl extends React.Component {
         this.state = {
             selectedMerchandise: null,
             editing: false
-            //quan:null
+           
             
         };
         this.handleClick = this.handleClick.bind(this);
@@ -27,18 +28,13 @@ class MerchandiseControl extends React.Component {
 
     handleClickingBuy =(id)=> {
       const { dispatch } = this.props;
-      const action = {
-        type: 'DECREMENT',
-        id: id
-      }
+      const action = a.decreseMerch(id);
       dispatch(action);
     } 
     handleClickingReStock =(id)=> {
       const { dispatch } = this.props;
-      const action = {
-        type: 'INCREMENT',
-        id: id
-      }
+      const action = a.increseMerch(id);
+   
       dispatch(action);
      
   };
@@ -47,15 +43,7 @@ class MerchandiseControl extends React.Component {
 
     handleEditingMerchandiseInList = (merchandiseToEdit) => {
       const { dispatch } = this.props;
-      const { id, names, description, quantity, price } = merchandiseToEdit;
-      const action = {
-        type: 'ADD_MERCH',
-        id: id,
-        names: names,
-        description: description,
-        quantity: quantity,
-        price: price
-      }
+      const action = a.addMerch(merchandiseToEdit);
       dispatch(action);
       this.setState({
         editing: false,
@@ -76,38 +64,24 @@ class MerchandiseControl extends React.Component {
         });
       } else {
         const { dispatch } = this.props;
-        const action = {
-        type: 'TOGGLE_FORM'
-      }
+        const action = a.toggleForm();
       dispatch(action);
       }
     }
     
     handleDeletingMerchandise = (id) => {
       const { dispatch } = this.props;
-      const action = {
-        type: 'DELETE_MERCH',
-        id: id
-      }
+      const action = a.deleteMerch(id)
       dispatch(action);
       this.setState({selectedMerchandise: null});
     }
     
     handleAddingNewMerchandiseToList = (newMerchandise) => {
       const { dispatch } = this.props;
-      const { id, names, description, quantity, price } = newMerchandise;
-      const action = {
-        type: 'ADD_MERCH',
-        id: id,
-        names: names,
-        description: description,
-        quantity: quantity,
-        price: price
-      }
+      
+      const action = a.addMerch(newMerchandise)
       dispatch(action);
-      const action2 = {
-        type: 'TOGGLE_FORM'
-      }
+      const action2 = a.toggleForm();
       dispatch(action2);
     };
 

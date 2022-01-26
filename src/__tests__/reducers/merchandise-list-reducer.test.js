@@ -1,10 +1,11 @@
 import merchandiseListReducer from '../../reducers/merchandise-list-reducer';
+import * as c from '../../actions/ActionTypes';
 
 describe('merchandiseListReducer', () => {
 
   let action;
   const merchandiseData = {
-    name: 'laptop',
+    names: 'laptop',
     description: 'windows',
     quantity: 4,
     price: '20',
@@ -15,14 +16,14 @@ describe('merchandiseListReducer', () => {
   };
   const currentState = {
     1: { 
-      name: 'laptop',
+      names: 'laptop',
       description: 'windows',
       quantity: 4,
       price: '20',
       id: 1 
     },
     2: { 
-      name: 'piyano',
+      names: 'piyano',
       description: 'more sounds',
       quantity: 5,
       price: '50',
@@ -35,10 +36,10 @@ describe('merchandiseListReducer', () => {
   });
 
   test('Should successfully add new merchandise data to mainMerchandiseList', () => {
-    const { name, description, quantity, price, id } = merchandiseData;
+    const { names, description, quantity, price, id } = merchandiseData;
     action = {
-      type: 'ADD_MERCH',
-      name: name,
+      type: c.ADD_MERCH,
+      names: names,
       description: description,
       quantity: quantity,
       price: price,
@@ -47,7 +48,7 @@ describe('merchandiseListReducer', () => {
 
     expect(merchandiseListReducer({}, action)).toEqual({
       [id] : {
-        name: name,
+        names: names,
         description: description,
         quantity: quantity,
         price: price,
@@ -58,12 +59,12 @@ describe('merchandiseListReducer', () => {
   
   test('Should successfully delete a merchandise', () => {
     action = {
-      type: 'DELETE_MERCH',
+      type: c.DELETE_MERCH,
       id: 1
     };
     expect(merchandiseListReducer(currentState, action)).toEqual({
       2: {
-        name: 'piyano',
+        names: 'piyano',
         description: 'more sounds',
         quantity: 5,
         price: '50',
@@ -74,7 +75,8 @@ describe('merchandiseListReducer', () => {
   test('Should successfully increase merchandise quantity to mainMerchandiseList', () => {
     
     action = {
-      type: 'INCREMENT_MERCH',
+      type: c.INCREMENT,
+      id: 1
     };
 
     expect(merchandiseListReducer(merchandiseData1, action)).toEqual({
@@ -84,7 +86,8 @@ describe('merchandiseListReducer', () => {
   test('Should successfully decrese merchandise quantity to mainMerchandiseList', () => {
     
     action = {
-      type: 'DECREMENT_MERCH',
+      type: c.DECREMENT,
+      id: 1
     };
 
     expect(merchandiseListReducer(merchandiseData1, action)).toEqual({

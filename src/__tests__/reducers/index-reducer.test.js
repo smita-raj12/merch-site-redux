@@ -2,6 +2,7 @@ import rootReducer from '../../reducers/index';
 import { createStore } from 'redux';
 import formVisibleReducer from '../../reducers/form-visible-reducer';
 import merchandiseListReducer from '../../reducers/merchandise-list-reducer';
+import * as c from './../actions/ActionTypes';
 
 let store = createStore(rootReducer);
 
@@ -23,8 +24,8 @@ describe("rootReducer", () => {
 
   test('Check that ADD_MERCH action works for merchandiseListReducer and root reducer', () => {
     const action = {
-        type: 'ADD_MERCH',
-        name: 'laptop',
+        type: c.ADD_MERCH,
+        names: 'laptop',
         description: 'contains lots of software',
         quantity: 4,
         price: "400",
@@ -36,7 +37,7 @@ describe("rootReducer", () => {
   
   test('Check that TOGGLE_FORM action works for formVisibleReducer and root reducer', () => {
     const action = {
-      type: 'TOGGLE_FORM'
+      type: c.TOGGLE_FORM
     }
     store.dispatch(action);
     expect(store.getState().formVisibleOnPage).toEqual(formVisibleReducer(undefined, action));
