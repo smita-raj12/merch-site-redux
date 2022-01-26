@@ -25,38 +25,26 @@ class MerchandiseControl extends React.Component {
       this.setState({editing: true});
     }
 
-    handleClickingBuy =()=> {
-        console.log("buy an item");
-      //   let incrementedMerchandiseList = this.state.mainMerchandiseList;
-      //   let quan = 0;
-      //   incrementedMerchandiseList.map(q => {
-      //       return(
-      //       quan = q.quantity--);
-            
-      //   });
-      //  this.setState({quan: quan});
-    }
-
-    // handleClickingReStock =()=> {
-    //    let MainMerchandiseList = this.state.mainMerchandiseList;
-    //    let quan = 0;
-    //    MainMerchandiseList.map(q =>{
-    //        return( quan= q.quantity ++) ;
-            
-    //     });
-    //    this.setState({quan: quan});
-    // }
-    handleClickingReStock =(quantity)=> {
-      console.log("merch control",quantity)
+    handleClickingBuy =(id)=> {
       const { dispatch } = this.props;
-      
-        const action = {
-        type: 'INCREMENT'
-      
+      const action = {
+        type: 'DECREMENT',
+        id: id
       }
       dispatch(action);
+    } 
+    handleClickingReStock =(id)=> {
+      const { dispatch } = this.props;
+      const action = {
+        type: 'INCREMENT',
+        id: id
+      }
+      dispatch(action);
+     
+  };
+
       
-   }
+
     handleEditingMerchandiseInList = (merchandiseToEdit) => {
       const { dispatch } = this.props;
       const { id, names, description, quantity, price } = merchandiseToEdit;
@@ -121,40 +109,41 @@ class MerchandiseControl extends React.Component {
         type: 'TOGGLE_FORM'
       }
       dispatch(action2);
-    }
+    };
 
     render(){
-    let currentlyVisibleState = null;
-    let buttonText = null; 
-    if (this.state.editing ) {      
-      currentlyVisibleState = <EditMerchandiseForm merchandise = {this.state.selectedMerchandise} 
-                                    onEditMerchandise = {this.handleEditingMerchandiseInList} />
-      buttonText = "Return to Merchandise List";                              
-    }else if (this.state.selectedMerchandise != null) {
-      currentlyVisibleState = <MerchandiseDetail merchandise = {this.state.selectedMerchandise} 
-                                    onClickingDelete = {this.handleDeletingMerchandise} 
-                                    onClickingEdit = {this.handleEditClick}  
-                                    onClickingBuy = {this.handleClickingBuy} 
-                                    onClickingReStock = {this.handleClickingReStock}        />
-      buttonText = "Return to Merchandise List";
-    }
-    else if (this.props.formVisibleOnPage) {
-      
-      currentlyVisibleState = <NewMerchandiseForm onNewMerchandiseCreation={this.handleAddingNewMerchandiseToList}  />;
-      buttonText = "Return to Merchandise List";
-    }else{
-      currentlyVisibleState = <MerchandiseList MerchandiseList={this.props.mainMerchandiseList} onMerchandiseSelection={this.handleChangingSelectedMerchandise} />;
-      
-      buttonText = "Add Merchandise";
-    }
-        return (
-          <React.Fragment>
-            {currentlyVisibleState}
-            <button onClick={this.handleClick}>{buttonText}</button> 
-          </React.Fragment>
-        );
-    }
-}
+      let currentlyVisibleState = null;
+      let buttonText = null; 
+      if (this.state.editing ) {      
+        currentlyVisibleState = <EditMerchandiseForm merchandise = {this.state.selectedMerchandise} 
+                                      onEditMerchandise = {this.handleEditingMerchandiseInList} />
+        buttonText = "Return to Merchandise List";                              
+      }else if (this.state.selectedMerchandise != null) {
+        currentlyVisibleState = <MerchandiseDetail merchandise = {this.state.selectedMerchandise} 
+                                      onClickingDelete = {this.handleDeletingMerchandise} 
+                                      onClickingEdit = {this.handleEditClick}  
+                                      onClickingBuy = {this.handleClickingBuy} 
+                                      onClickingReStock = {this.handleClickingReStock}        />
+        buttonText = "Return to Merchandise List";
+      }
+      else if (this.props.formVisibleOnPage) {
+        
+        currentlyVisibleState = <NewMerchandiseForm onNewMerchandiseCreation={this.handleAddingNewMerchandiseToList}  />;
+        buttonText = "Return to Merchandise List";
+      }else{
+        currentlyVisibleState = <MerchandiseList MerchandiseList={this.props.mainMerchandiseList} onMerchandiseSelection={this.handleChangingSelectedMerchandise} />;
+        
+        buttonText = "Add Merchandise";
+      }
+          return (
+            <React.Fragment>
+              {currentlyVisibleState}
+              <button onClick={this.handleClick}>{buttonText}</button> 
+            </React.Fragment>
+          );
+      }
+    };
+  
 const mapStateToProps = state => {
   return {
     mainMerchandiseList: state.mainMerchandiseList,
@@ -165,7 +154,7 @@ const mapStateToProps = state => {
 MerchandiseControl.propTypes = {
   mainMerchandiseList: PropTypes.object,
   formVisibleOnPage: PropTypes.bool,
-  //quantity: PropTypes.number
+  //quantity: PropTypes.object
 };
 MerchandiseControl = connect(mapStateToProps)(MerchandiseControl);
 

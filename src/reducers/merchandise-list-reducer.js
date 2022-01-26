@@ -1,9 +1,8 @@
+
+
 export default (state = {}, action) => {
     const { names, description, quantity, price, id } = action;
     
-    // let initialState={
-    //     quantity: state.quantity
-    // }
     switch (action.type) {
     case 'ADD_MERCH':
       return Object.assign({}, state, {
@@ -15,14 +14,36 @@ export default (state = {}, action) => {
             id: id
         }
     });
+    
     case 'DELETE_MERCH':
         let newState = { ...state };
+        console.log(newState[id])
         delete newState[id];
         return newState;
     case 'INCREMENT': 
-    return Object.assign({}, state, {
-            quantity: state[quantity] ++,
-    });
+    
+        let newState1 = {...state} 
+        console.log(newState1); 
+        let quan = {}
+        Object.values(newState1).map(q => {
+            console.log(q.quantity)
+            quan = q.quantity ++
+        })
+        
+        console.log(newState1[id]);  
+        return  newState1;
+        case 'DECREMENT': 
+    
+        let newState2 = {...state} 
+        console.log(newState2); 
+        let quan1 = {}
+        Object.values(newState2).map(q => {
+            console.log(q.quantity)
+            quan1 = q.quantity --
+        })
+        
+        console.log(newState2[id]);  
+        return  newState2;    
     default:
         return state;
     }

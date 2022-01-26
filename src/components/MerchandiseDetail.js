@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function MerchandiseDetail(props){
-  const { merchandise, onClickingDelete } = props; 
+  const { merchandise, onClickingDelete, onClickingBuy } = props; 
   
   function getQuantityText(quantity) {
     if (quantity <= 0) {
@@ -20,7 +20,7 @@ function MerchandiseDetail(props){
       <p>{merchandise.description}</p>
       <p>{getQuantityText(merchandise.quantity)}</p>
       <p>{merchandise.price}</p>
-      <button disabled={merchandise.quantity <= 0 ? true : false} onClick={ props.onClickingBuy }>Buy</button>
+      <button disabled={merchandise.quantity <= 0 ? true : false} onClick={ ()=> onClickingBuy(merchandise.id) }>Buy</button>
       <button onClick={ props.onClickingReStock }>ReStock</button>
       <button onClick={()=> onClickingDelete(merchandise.id) }>Close Merchandise</button> 
       <button onClick={ props.onClickingEdit }>Update Merchandise</button>

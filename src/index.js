@@ -11,7 +11,7 @@ import rootReducer from './reducers/index';
 const store = createStore(rootReducer);
 //const store = createStore(reducer);
 
-store.subscribe(() =>
+const unsubscribe = store.subscribe(() =>
   console.log(store.getState())
 );
 
@@ -27,3 +27,4 @@ ReactDOM.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
+unsubscribe();
