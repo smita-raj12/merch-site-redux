@@ -22,13 +22,13 @@ export default (state = {}, action) => {
     case c.INCREMENT: 
         let newState1 = {...state} 
         Object.values(newState1).map(q => {
-            q.quantity ++
+            return(q.quantity ++);
         })
         return  newState1;
     case c.DECREMENT: 
         let newState2 = {...state} 
         Object.values(newState2).map(q => {
-            q.quantity --
+            return(q.quantity --);
         })
         return  newState2;    
     default:
